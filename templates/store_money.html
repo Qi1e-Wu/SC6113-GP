@@ -119,14 +119,14 @@
                         "type": "uint256"
                     }
                 ],
-                "name": "store_m",
+                "name": "store",
                 "outputs": [],
                 "stateMutability": "nonpayable",
                 "type": "function"
             },
             {
                 "inputs": [],
-                "name": "view_m",
+                "name": "viewnum",
                 "outputs": [
                     {
                         "internalType": "uint256",
@@ -147,11 +147,11 @@
             const value = document.getElementById('moneyInput').value;
             console.log("value: " + value);
             console.log("accounts[0] " + accounts[0]);
-            await contract.methods.store_m(value).send({from: accounts[0]});
+            await contract.methods.store(value).send({from: accounts[0]});
         }
 
         async function getValue() {
-            const storedValue = await contract.methods.view_m().call();
+            const storedValue = await contract.methods.viewnum().call();
             console.log("stored value " + storedValue);
             document.getElementById('storedValue').innerText = "Stored Value: " + storedValue;
         }
