@@ -11,7 +11,7 @@ def index():
 def main():
     r = request.form.get("q")
     current_time = datetime.datetime.now()
-    conn = sqlite3.connect('/content/drive/MyDrive/Colab Notebooks/Practice/2024 SC6113 T1/dapp.db')
+    conn = sqlite3.connect('dapp.db')
     c = conn.cursor()
     c.execute("insert into user values (?, ?)", (r, current_time))
     conn.commit()
