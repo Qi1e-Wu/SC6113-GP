@@ -40,8 +40,12 @@ def register():
         wallet_address = request.form['wallet_address']
         password = request.form['password']
         new_user = User(wallet_address=wallet_address, password=password)
-        db.session.add(new_user)
-        db.session.commit()
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+        except:
+            msg = "user already exists!"
+            return render_template('register.html',message=msg)
         return redirect(url_for('login'))
     return render_template('register.html')
 
