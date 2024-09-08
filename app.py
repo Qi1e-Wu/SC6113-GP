@@ -75,5 +75,6 @@ def donate(project_id):
     return render_template('donate.html', project_id=project_id)
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
